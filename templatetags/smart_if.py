@@ -6,6 +6,10 @@ greater than and less than operators. Some common case examples::
 
     {% if articles|length >= 5 %}...{% endif %}
     {% if "ifnotequal tag" != "beautiful" %}...{% endif %}
+
+Taken from two Django Snippets with much thanks to the original authors:
+  http://www.djangosnippets.org/snippets/1350/
+  http://www.djangosnippets.org/snippets/1572/
 """
 import unittest
 from django import template
