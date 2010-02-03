@@ -4,6 +4,8 @@ from django.db import models
 from django.db import connection
 from django.db.models.signals import post_delete, post_save
 from django.contrib.auth.models import User
+from django_extensions.db.fields import CreationDateTimeField
+from django_extensions.db.fields import ModificationDateTimeField
 
 """
 Proxy models for user accounts to clean up display in Django admin
@@ -280,9 +282,8 @@ class CommonAbstractModel(models.Model):
   Common ABC for most models.
   Provides created/updated_at, and active/inactive status.
   """
-  created_at = models.DateTimeField(
-    default=datetime.datetime.now(), editable=False)
-  updated_at = AutoDateTimeField(editable=False)
+  created_at = CreationDateTimeField()
+  updated_at = ModificationDateTimeField()
   active = models.BooleanField(default=True, verbose_name="published")
   
   class Meta:
