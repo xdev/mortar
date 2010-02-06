@@ -275,6 +275,10 @@ class AutoDateTimeField(models.DateTimeField):
   def pre_save(self, model_instance, add):
     return datetime.datetime.now()
 
+class CommonAbstractManager(models.Manager):
+  def get_active(self):
+      return self.get_query_set().filter(active=True)
+
 class CommonAbstractModel(models.Model):
   """
   Common ABC for most models.
@@ -284,6 +288,7 @@ class CommonAbstractModel(models.Model):
     default=datetime.datetime.now(), editable=False)
   updated_at = AutoDateTimeField(editable=False)
   active = models.BooleanField(default=True, verbose_name="published")
+  objects = CommonAbstractManager()
   
   class Meta:
     get_latest_by = 'updated_at'
