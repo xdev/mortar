@@ -1,0 +1,19 @@
+Django==1.1.1
+Markdown==2.0.3
+Werkzeug==0.5.1
+mercurial==1.4.2
+readline==2.6.4
+simplejson==2.0.9
+wsgiref==0.1.2
+psycopg2==2.0.12
+pycrypto==2.0.1
+Fabric==0.9.0
+South==0.6.2
+PIL==1.1.6
+django-flashpolicies==1.3.1
+docutils==0.6
+BeautifulSoup==3.0.8
+-e git://github.com/mintchaos/django_compressor.git#egg=django_compressor
+sorl-thumbnail==3.2.5
+ipython==0.10
+-e hg+http://hgsvn.trbs.net/django-command-extensions#egg=django_extensions
