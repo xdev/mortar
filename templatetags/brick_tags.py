@@ -26,18 +26,18 @@ class NavSelectedNode(template.Node):
         return ""
 
 class SplitListNode(Node):
-    def __init__(self, list, cols, new_list):
-        self.list, self.cols, self.new_list = list, cols, new_list
-    
-    def split_seq(self, list, cols=2):
+    def __init__(self, old_list, cols, new_list):
+        self.old_list, self.cols, self.new_list = old_list, cols, new_list
+
+    def split_seq(self, old_list, cols=2):
         start = 0
         for i in xrange(cols):
-            stop = start + len(list[i::cols])
-            yield list[start:stop]
+            stop = start + len(old_list[i::cols])
+            yield old_list[start:stop]
             start = stop
-    
+
     def render(self, context):
-        context[self.new_list] = self.split_seq(context[self.list],
+        context[self.new_list] = self.split_seq(context[self.old_list],
             int(self.cols))
         return ''
 
